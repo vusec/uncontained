@@ -1,0 +1,8 @@
+[submodule "llvm-project"]
+	path = llvm-project
+	url = https://github.com/vusec/uncontained-llvm-project.git
+	branch = uncontained-llvm-12
+[submodule "linux"]
+	path = linux
+	url = https://github.com/vusec/uncontained-linux.git
+	branch = uncontained
