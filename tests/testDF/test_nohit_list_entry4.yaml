@@ -1,0 +1,16 @@
+---
+rules:
+  - name: list_entry_strict
+    source: "__uncontained_list_entry_source"
+    sink: ANY
+      #  ignore all the flows dominated by the sanitizers
+    sanitizers:
+      - { function_call: "list_empty" }
+      - { function_call: "list_is_head" }
+      - { function_call: "__uncontained_list_entry_is_head" }
+      - { instruction: "cbr"}
+    options:
+      # do not need dominance for sanitizers, just reachability
+      sanitize_reachable: true
+        # filter out if the source is actually generated behind any sanitizer
+      sanitize_source: true
