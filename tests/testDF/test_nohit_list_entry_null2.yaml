@@ -1,0 +1,14 @@
+---
+rules:
+  - name: list_entry_null
+    source: "__uncontained_list_entry_source"
+    sink: CMPNULL
+    #  ignore all the flows dominated by the sanitizers
+    sanitizers:
+      - { function_call: "list_is_last", sanitize_source: true }
+      - { function_call: "list_is_first", sanitize_source: true }
+      - { function_call: "list_is_head", sanitize_source: true }
+      - { function_call: "list_empty", sanitize_source: true }
+      - { function_call: "__uncontained_list_entry_is_head", sanitize_source: true }
+      - { instruction: "load"}
+      - { instruction: "phi", operand: 0 } # phi that merges the pointer with NULL

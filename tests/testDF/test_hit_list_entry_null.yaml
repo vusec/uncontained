@@ -1,0 +1,13 @@
+---
+rules:
+  - name: list_entry_null
+    source: "__uncontained_list_entry_source"
+    sink: CMPNULL
+    #  ignore all the flows dominated by the sanitizers
+    sanitizers:
+      - { function_call: "list_is_last" }
+      - { function_call: "list_is_first" }
+      - { function_call: "list_is_head" }
+      - { function_call: "list_empty" }
+      - { function_call: "__uncontained_list_entry_is_head" }
+      - { instruction: "load"}

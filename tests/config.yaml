@@ -1,0 +1,43 @@
+---
+rules:
+  - name: inet_lookup
+    source: "__inet_lookup_established"
+    sink: ANY
+      #  ignore all the flows inside the "ignore" functions
+    ignore:
+      - kmem_cache_free
+        #  ignore all the flows dominated by the sanitizers
+    sanitizers:
+      - { instruction: "load", offset: 18 } # access to skc_state
+      - { function_call: "sk_fullsock" }
+  - name: test_rule
+    source: __test_source
+    sink: __test_sink
+    sanitizers:
+      - { function_call: "__test_sanitizer" }
+  - name: list_entry
+    source: "__uncontained_list_entry_source"
+    sink: ANY
+      #  ignore all the flows dominated by the sanitizers
+    sanitizers:
+      - { function_call: "list_empty" }
+      - { function_call: "list_is_head" }
+      - { function_call: "__uncontained_list_entry_is_head" }
+    options:
+      # do not need dominance for sanitizers, just reachability
+      sanitize_reachable: true
+        # filter out if the source is actually generated behind any sanitizer
+      sanitize_source: true
+  - name: backwards_contained
+    source: "backwards_contained"
+    sink: ANY
+  - name: kobj
+    source: "kobj"
+    sink: ANY
+  - name: list_entry_correlation
+    source: "list_entry_correlation"
+    sink: ANY
+    sanitizers:
+      - { function_call: "kfree" }
+      - { function_call: "__free_pages" }
+      - { function_call: "__list_add" }
