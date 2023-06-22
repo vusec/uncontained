@@ -52,6 +52,8 @@ sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf $GO_VERSION https://go.dev/dl/$GO_VERSION.tar.gz
 # qemu
 sudo apt install qemu-system-x86
+# evaluation
+pip3 install scipy pandas
 ```
 
 Then make sure that `~/.local/bin` and `/usr/local/go/bin` are
@@ -142,6 +144,8 @@ Expected results are the overhead in terms of throughput of executed testcases.
   Then let it run for the 30 hours to get the results.
 * Results: The result will be the percentage of decreased executed testcases
   when running syzkaller.
+  You can now look at the results with executing
+  `./scripts/evaluation/syzkaller-bench.py --prefix 'evaluation/syzkaller/results/syzkaller-bench-'`.
 
 #### Experiment E3: LMBench Performance Evaluation [2 human-hours + 60 compute-hours]
 
@@ -158,6 +162,8 @@ benchmarking suite to verify performance overhead.
   Then let it run to get the results.
 * Results: The result will be the overhead numbers of the different
   configurations on top of the baseline for the LMBench testcases.
+  You can now look at the results with executing
+  `./scripts/evaluation/lmbench.py --prefix 'evaluation/lmbench/results/'`.
 
 #### Experiment E4: Static Analyzer Evaluation [1 human-hour + 3 compute-hours]
 
