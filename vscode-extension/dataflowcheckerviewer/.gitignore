@@ -1,0 +1,11 @@
+.DS_Store
+npm-debug.log
+Thumbs.db
+node_modules/
+out/
+.vs/
+tsconfig.lsif.json
+*.lsif
+*.db
+.vscode
+!.vscode/launch.json
