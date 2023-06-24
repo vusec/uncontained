@@ -1,0 +1,164 @@
+{
+  "name": "dataflowviewer",
+  "displayName": "DataflowViewer",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:dataflow_view"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dataflow-view-container",
+          "title": "Dataflow",
+          "icon": "assets/dark/dataflow.svg"
+        }
+      ]
+    },
+    "views": {
+      "dataflow-view-container": [
+        {
+          "id": "dataflow_view",
+          "name": "Viewer",
+          "contextualTitle": "Dataflow Viewer"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "dataflow_view",
+        "contents": "Parse a YAML report file to show dataflows.\n[Parse Report File](command:dataflow_view.parseReportFile)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "dataflow_view.itemClicked",
+        "title": "dataflow view item"
+      },
+      {
+        "command": "dataflow_view.parseReportFile",
+        "title": "Parse Dataflow Report File"
+      },
+      {
+        "command": "dataflow_view.export",
+        "title": "Export Analysis To File"
+      },
+      {
+        "command": "dataflow_view.deactivate",
+        "title": "Reset Dataflow Viewer"
+      },
+      {
+        "command": "dataflow_view.showCache",
+        "title": "Show All Demoted"
+      },
+      {
+        "command": "dataflow_view.resetCache",
+        "title": "Reset Demoted"
+      },
+      {
+        "command": "dataflow_view.makeInactive",
+        "title": "Demote",
+        "icon": "$(debug-step-into)"
+      },
+      {
+        "command": "dataflow_view.makeFP",
+        "title": "FP",
+        "icon": "$(panel-close)"
+      },
+      {
+        "command": "dataflow_view.makeActive",
+        "title": "Promote",
+        "icon": "$(debug-step-out)"
+      },
+      {
+        "command": "dataflow_view.showReport",
+        "title": "Show Report",
+        "icon": "$(eye-watch)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "dataflow_view.parseReportFile",
+          "when": "view == dataflow_view"
+        },
+        {
+          "command": "dataflow_view.export",
+          "when": "view == dataflow_view"
+        },
+        {
+          "command": "dataflow_view.deactivate",
+          "when": "view == dataflow_view"
+        },
+        {
+          "command": "dataflow_view.showCache",
+          "when": "view == dataflow_view"
+        },
+        {
+          "command": "dataflow_view.resetCache",
+          "when": "view == dataflow_view"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "dataflow_view.makeFP",
+          "when": "view == dataflow_view && viewItem == source",
+          "group": "inline"
+        },
+        {
+          "command": "dataflow_view.makeInactive",
+          "when": "view == dataflow_view && viewItem == source",
+          "group": "inline"
+        },
+        {
+          "command": "dataflow_view.makeActive",
+          "when": "view == dataflow_view && viewItem == sourceInactive",
+          "group": "inline"
+        },
+        {
+          "command": "dataflow_view.showReport",
+          "when": "view == dataflow_view && viewItem == report",
+          "group": "inline"
+        },
+        {
+          "command": "dataflow_view.showReport",
+          "when": "view == dataflow_view && viewItem == reportInactive",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/js-yaml": "^4.0.5",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
