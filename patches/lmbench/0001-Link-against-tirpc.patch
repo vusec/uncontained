@@ -1,0 +1,26 @@
+From 48a48b4cbb22f5256d8d717a5fa1cc215f9622cd Mon Sep 17 00:00:00 2001
+From: Andrew Fasano <fasano@mit.edu>
+Date: Mon, 3 Apr 2023 12:28:39 -0400
+Subject: [PATCH 1/2] Link against tirpc
+
+https://github.com/intel/lmbench/issues/21
+---
+ scripts/build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/build b/scripts/build
+index 16a6600..561cdb3 100755
+--- a/scripts/build
++++ b/scripts/build
+@@ -18,7 +18,7 @@ done
+ 
+ trap 'rm -f ${BASE}$$.s ${BASE}$$.c ${BASE}$$.o ${BASE}$$; exit 1' 1 2 15
+ 
+-LDLIBS=-lm
++LDLIBS="-lm -ltirpc"
+ 
+ # check for HP-UX's ANSI compiler
+ echo "main(int ac, char *av[]) { int i; }" > ${BASE}$$.c
+-- 
+2.34.1
+

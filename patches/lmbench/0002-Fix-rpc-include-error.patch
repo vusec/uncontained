@@ -1,0 +1,26 @@
+From 4a1c2a7616d25b6ecd47594ff98a571dfbb9eb4e Mon Sep 17 00:00:00 2001
+From: Andrew Fasano <fasano@mit.edu>
+Date: Mon, 3 Apr 2023 12:27:48 -0400
+Subject: [PATCH 2/2] Fix rpc include error
+
+https://github.com/intel/lmbench/issues/16
+---
+ src/Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/Makefile b/src/Makefile
+index 2555014..dcf3226 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -58,6 +58,8 @@ SAMPLES=lmbench/Results/aix/rs6000 lmbench/Results/hpux/snake \
+ 	lmbench/Results/irix/indigo2 lmbench/Results/linux/pentium \
+ 	lmbench/Results/osf1/alpha lmbench/Results/solaris/ss20* 
+ 
++CPPFLAGS:=$(CPPFLAGS) -I /usr/include/tirpc/
++
+ COMPILE=$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ INCS =	bench.h lib_mem.h lib_tcp.h lib_udp.h stats.h timing.h
+-- 
+2.34.1
+
