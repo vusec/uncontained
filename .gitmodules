@@ -6,3 +6,6 @@
 	path = linux
 	url = https://github.com/vusec/uncontained-linux.git
 	branch = uncontained
+[submodule "kernel-tools"]
+	path = kernel-tools
+	url = https://github.com/Jakob-Koschel/kernel-tools.git
