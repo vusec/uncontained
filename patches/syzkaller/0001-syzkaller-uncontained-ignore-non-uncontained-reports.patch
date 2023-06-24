@@ -1,0 +1,47 @@
+From 6dfaf8538b07efd8d26b1decb3d4119873b8aabc Mon Sep 17 00:00:00 2001
+From: Jakob Koschel <jkl820.git@gmail.com>
+Date: Tue, 28 Feb 2023 16:18:38 +0100
+Subject: [PATCH 2/2] uncontained: ignore non uncontained reports
+
+---
+ syz-manager/html.go | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/syz-manager/html.go b/syz-manager/html.go
+index f9549637a..4830a509c 100644
+--- a/syz-manager/html.go
++++ b/syz-manager/html.go
+@@ -550,6 +550,9 @@ func readCrash(workdir, dir string, repros map[string]bool, start time.Time, ful
+ 		return nil
+ 	}
+ 	desc := string(trimNewLines(descBytes))
++	if !strings.HasPrefix(desc, "KASAN") {
++		return nil
++	}
+ 	stat, err := descFile.Stat()
+ 	if err != nil {
+ 		return nil
+@@ -575,6 +578,20 @@ func readCrash(workdir, dir string, repros map[string]bool, start time.Time, ful
+ 			}
+ 		} else if strings.HasPrefix(f, "report") {
+ 			reports[f] = true
++
++			reportFile, err := os.Open(filepath.Join(crashdir, dir, f))
++			if err != nil {
++				return nil
++			}
++			defer reportFile.Close()
++			reportBytes, err := ioutil.ReadAll(reportFile)
++			if err != nil || len(reportBytes) == 0 {
++				return nil
++			}
++			report := string(trimNewLines(reportBytes))
++			if !strings.Contains(report, "[UNCONTAINED]") {
++				return nil
++			}
+ 		} else if f == "repro.prog" {
+ 			hasRepro = true
+ 		} else if f == "repro.cprog" {
+-- 
+2.34.1
+
