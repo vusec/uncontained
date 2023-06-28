@@ -85,7 +85,7 @@ ADDITIONAL_LLVM_VARIABLES=-DLLVM_ENABLE_EH=ON -DLLVM_ENABLE_RTTI=ON
 3. Compile all the necessary dependencies (this will take a while to compile
    llvm-project and linux with fullLTO):
 ```
-scripts/compile-and-run.sh
+scripts/compile.sh
 ```
 
 ### Basic Tests
@@ -123,7 +123,7 @@ the experiments (E4).
    Installation step, including building syzkaller and create
    the syzkaller image (should be done by the `compile_and_run.sh` script).
 * Execution: You can compile the kernel with instrumentation and start the
-  fuzzer with executing `./scripts/compile-and-run.sh`.
+  fuzzer with executing `./scripts/compile.sh && ./scripts/run.sh`.
   Then let it run for at least 24 hours to get some results.
 * Results: The result will be the crashes in the
    `kernel-tools/out/syzkaller-workdir/crashes` directory.

@@ -58,7 +58,3 @@ if [[ $answer =~ ^[Yy]$ ]] || [[ -z $answer ]]; then
     echo "[INFO] Compile syzkaller and generate config"
     task syzkaller:build syzkaller:config
 fi
-
-# currently disabled (we'll split compiling and running into separate files)
-# echo "[INFO] Start syzkaller to do fuzzing (run for at least 24 hours)"
-# task syzkaller:run
