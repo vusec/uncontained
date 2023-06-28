@@ -103,9 +103,11 @@ LLVM_DIR=$PWD/llvm-project/build tests/testDF.sh
 
 C1. The `uncontained` sanitizer finds new types of container confusions.
 This is proven by the experiment (E1).
+
 C2. The `uncontained` sanitizer comes with an acceptable performance runtime
 overhead.
 This is proven by the experiments (E2) and (E3).
+
 C3. The `uncontained` static analyzer has been used to
 uncover new bugs in the Linux kernel. This is proven by
 the experiments (E4).
