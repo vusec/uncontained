@@ -16,7 +16,7 @@ You can find the full paper [here](https://download.vusec.net/papers/uncontained
 #### Hardware Dependencies
 
 `uncontained` does not impose any strict hardware requirements but we assume a
-recent x86_64 machine with enough RAM (minimum 32GB) to compile LLVM/Linux and
+recent x86_64 machine with enough RAM (minimum 64GB, or enough swap) to compile LLVM/Linux and
 run virtual QEMU machines for fuzzing with syzkaller.
 
 #### Software Dependencies
@@ -40,7 +40,7 @@ are required:
 sh -c "‘curl -ssL https://taskfile.dev/install.sh‘" \
 -- -d -b ~/.local/bin
 # llvm-project
-sudo apt install build-essential clang-12 lld-12 ninja-build ccache
+sudo apt install build-essential clang-12 lld-12 ninja-build ccache cmake
 # linux
 sudo apt install bison flex libelf-dev libssl-dev
 # syzkaller
@@ -70,7 +70,7 @@ git clone --recurse-submodules https://github.com/vusec/uncontained.git
 ```
 
 2. Create the `.env` file here with the following content (replace
-`/path/to/uncontained` with the actual absolute path):
+`/path/to/uncontained` with the actual absolute path) within the `kernel-tools` directory:
 ```
 REPOS=/path/to/uncontained
 LLVMPREFIX=/path/to/uncontainedllvm-project/build
