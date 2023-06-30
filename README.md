@@ -74,7 +74,7 @@ git clone --recurse-submodules https://github.com/vusec/uncontained.git
 `/path/to/uncontained` with the actual absolute path) within the `kernel-tools` directory:
 ```
 REPOS=/path/to/uncontained
-LLVMPREFIX=/path/to/uncontainedllvm-project/build
+LLVMPREFIX=/path/to/uncontained/llvm-project/build
 KERNEL=/path/to/uncontained/linux
 ENABLE_KASAN=1
 ENABLE_DEBUG=1
