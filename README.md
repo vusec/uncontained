@@ -49,7 +49,8 @@ sudo apt install debootstrap
 GO_VERSION=go1.20.5.linux-amd64
 wget https://go.dev/dl/$GO_VERSION.tar.gz
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf $GO_VERSION https://go.dev/dl/$GO_VERSION.tar.gz
+sudo tar -C /usr/local -xzf $GO_VERSION.tar.gz
+rm -f $GO_VERSION.tar.gz
 # qemu
 sudo apt install qemu-system-x86
 # evaluation
