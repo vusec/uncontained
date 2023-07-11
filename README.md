@@ -188,3 +188,13 @@ necessary reports with static analysis.
   based on uniqueness.
   You can load the YAML reports into the `vscode-extension` to look at them
   in a more convenient way and do the grouping based on the source code line.
+
+##### Rule to Pattern Matching
+
+| Rule                   |  Pattern                                |
+|------------------------|-----------------------------------------|
+|    backwards_contained | 1. Statically Incompatible Containers   |
+|      list_entry_strict | 2. Empty-list Confusion                 |
+| list_entry_correlation | 3. Mismatch on Data Structure Operators |
+|         use_after_iter | 4. Containers with Contracts            |
+|                   kobj | 5. Containers with Contracts            |
