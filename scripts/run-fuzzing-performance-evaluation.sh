@@ -52,7 +52,7 @@ run_syzkaller_eval() {
 prepare_syzkaller_eval
 prepare_checks
 
-# prepare_linux 'baseline'
+prepare_linux 'baseline'
 echo "[INFO] [RUN BASELINE]"
 run_syzkaller_eval 'baseline'
 
