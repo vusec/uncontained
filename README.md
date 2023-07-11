@@ -42,7 +42,7 @@ sh -c "‘curl -ssL https://taskfile.dev/install.sh‘" \
 # llvm-project
 sudo apt install build-essential clang-12 lld-12 ninja-build ccache cmake
 # linux
-sudo apt install bison flex libelf-dev libssl-dev
+sudo apt install bison flex libelf-dev libssl-dev coccinelle
 # syzkaller
 sudo apt install debootstrap
 # install golang 1.20.5
@@ -176,6 +176,8 @@ necessary reports with static analysis.
 * How to: Compile the kernel with our static analyzers enabled to extract all
   the bug reports.
 * Preparation: Make sure you setup everything from the Installation step.
+  Also make sure you comment out `ENABLE_KASAN` and `ENABLE_SYZKALLER` in your
+  `.env` file.
 * Execution: You can generate all the reports with
   `./scripts/run-static-analyzer.sh`.
   Then let it run to get the results.
