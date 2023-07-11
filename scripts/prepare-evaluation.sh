@@ -13,10 +13,10 @@ prepare_checks() {
     When you're done press [ENTER] to continue
     "
 
-    read -p "Do you want to build all the dependencies (running compile_and_run.sh)? (y/N) " answer
+    read -p "Do you want to build all the dependencies (running compile.sh)? (y/N) " answer
 
     if [[ $answer =~ ^[Yy]$ ]]; then
-        $SCRIPTS_PATH/compile_and_run.sh
+        $SCRIPTS_PATH/compile.sh
     fi
 
     read -p "Do you want to kill any dangling qemu-system-x86_64 processes? (y/N) " answer

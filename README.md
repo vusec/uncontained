@@ -122,7 +122,7 @@ the experiments (E4).
    the sanitizer.
 * Preparation: Make sure you setup everything from the
    Installation step, including building syzkaller and create
-   the syzkaller image (should be done by the `compile_and_run.sh` script).
+   the syzkaller image (should be done by the `compile.sh` script).
 * Execution: You can compile the kernel with instrumentation and start the
   fuzzer with executing `./scripts/compile.sh && ./scripts/run.sh`.
   Then let it run for at least 24 hours to get some results.
@@ -141,7 +141,7 @@ Expected results are the overhead in terms of throughput of executed testcases.
   (baseline (stock syzkaller), KASAN and `uncontained`)
 * Preparation: Make sure you setup everything from the
    Installation step, including building syzkaller and create
-   the syzkaller image (should be done by the `compile_and_run.sh` script).
+   the syzkaller image (should be done by the `compile.sh` script).
 * Execution: You can compile the kernel with instrumentation and start the
   fuzzer with executing `./scripts/run-fuzzing-performance-evaluation.sh`.
   Then let it run for the 30 hours to get the results.
@@ -159,7 +159,7 @@ benchmarking suite to verify performance overhead.
   KASAN, `uncontained`).
 * Preparation: Make sure you setup everything from the
    Installation step, including building syzkaller and create
-   the syzkaller image (should be done by the `compile_and_run.sh` script).
+   the syzkaller image (should be done by the `compile.sh` script).
 * Execution: You can compile the kernel with instrumentation and start the
   fuzzer with executing `./scripts/run-lmbench-performance-evaluation.sh`.
   Then let it run to get the results.
