@@ -15,6 +15,9 @@ and comment out ENABLE_KASAN and ENABLE_SYZKALLER.
 When you're done press [ENTER] to continue
 "
 
+# go to a branch that is guaranteed to have the `syzbot-nosan.config`.
+(cd $KERNEL_PATH && git checkout uncontained-static-analysis-tainted)
+
 echo "[INFO] Overwriting .config (disabling sanitizers)"
 cp $KERNEL_PATH/syzbot-nosan.config $KERNEL_PATH/.config
 
