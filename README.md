@@ -129,7 +129,7 @@ the experiments (E4).
 * Results: The result will be the crashes in the
    `kernel-tools/out/syzkaller-workdir/crashes` directory.
    We need to manually filter out bugs that are not triggered by `uncontained`
-   (all that don’t start with `UNCONTAINED:`).
+   (all that do not have three lines of `[UNCONTAINED]` before the `BUG:` line).
 
 #### Experiment E2: Fuzzing Performance Evaluation [2 human-hours + 30 compute-hours]
 
