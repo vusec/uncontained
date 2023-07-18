@@ -72,7 +72,7 @@ run_lmbench () {
     task syzkaller:scp -- 'root@localhost:lmbench/results/x86_64-linux-gnu/*' $LMBENCH_RESULTS_PATH
 
     echo "[INFO] kill the syzkaller VM"
-    kill $QEMU_PID
+    kill -9 $QEMU_PID
 
     echo "[INFO] give LMBench results corret names"
     for ((i=0; i<LMBENCH_NR_RUNS; i++))
