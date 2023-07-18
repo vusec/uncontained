@@ -41,7 +41,7 @@ run_syzkaller_eval() {
         sleep $FUZZING_TIME
         echo "[INFO] kill the syzkaller VM"
         # 4. kill syzkaller
-        kill $SYZKALLER_PID
+        kill -9 $SYZKALLER_PID
         echo "[INFO] copy out syzkaller-bench-$LINUX_INSTANCE-$i"
         # 5. move syzkaller-bench file
         cp $KERNEL_TOOLS_PATH/out/syzkaller-bench \
