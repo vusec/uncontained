@@ -8,18 +8,18 @@ KERNEL_TOOLS_PATH=$UNCONTAINED_PATH/kernel-tools
 KERNEL_PATH=$UNCONTAINED_PATH/linux
 STATIC_ANALYZERS_RESULTS_PATH=$UNCONTAINED_PATH/evaluation/static-analyzer-results
 
-cd $KERNEL_TOOLS_PATH
+# we don't want to compile the runtime and not have KASAN/KCOV enabled
+export ENABLE_KASAN=0
+export ENABLE_SYZKALLER=0
 
-read -p "[INFO] IMPORTANT! Before you continue open the .env in kernel-tools
-and comment out ENABLE_KASAN and ENABLE_SYZKALLER.
-When you're done press [ENTER] to continue
-"
+cd $KERNEL_TOOLS_PATH
 
 # go to a branch that is guaranteed to have the `syzbot-nosan.config`.
 (cd $KERNEL_PATH && git checkout uncontained-static-analysis-tainted)
 
 echo "[INFO] Overwriting .config (disabling sanitizers)"
 cp $KERNEL_PATH/syzbot-nosan.config $KERNEL_PATH/.config
+task kernel:bzImage
 
 echo "[INFO] wiping build folder to remove runtime component"
 rm -rf $UNCONTAINED_PATH/build
