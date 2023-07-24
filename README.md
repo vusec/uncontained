@@ -94,7 +94,7 @@ export PATH=$HOME/.local/bin:/usr/local/go/bin:$PATH
 git clone --recurse-submodules https://github.com/vusec/uncontained.git
 ```
 
-2. Create the `kernel-tools/.env` file here with the following content (replace
+2. Create the `kernel-tools/.env` file with the following content (replace
 `/path/to/uncontained` with the actual absolute path):
 ```
 REPOS=/path/to/uncontained
