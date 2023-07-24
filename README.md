@@ -108,7 +108,7 @@ ADDITIONAL_LLVM_VARIABLES=-DLLVM_ENABLE_EH=ON -DLLVM_ENABLE_RTTI=ON
 ```
 
 3. Compile all the necessary dependencies (this will take a while to compile
-   llvm-project and linux with fullLTO):
+   llvm-project and Linux with fullLTO):
 ```
 scripts/compile.sh
 ```
