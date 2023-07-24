@@ -3,7 +3,7 @@ project(uncontained-runtime)
 
 set(CMAKE_CXX_STANDARD 11)
 
-if(DEFINED ENV{ENABLE_KASAN}) # DEFINED ENABLE_KASAN
+if(ENV{ENABLE_KASAN}) # DEFINED ENABLE_KASAN
 
 if(NOT DEFINED ENV{KERNEL})
   message(FATAL_ERROR "$KERNEL is not defined")
