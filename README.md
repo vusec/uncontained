@@ -9,6 +9,23 @@ Based on the bugs we found, we generalize bug patterns and propose a novel stati
 
 You can find the full paper [here](https://download.vusec.net/papers/uncontained_sec23.pdf).
 
+## Directory Structure
+
+* evaluation: Contains the necessary LMBench configuration and will include the results of the evaluation scripts.
+* passes/ContainerOfSanitizer: The LLVM pass inserting the necessary `container_of()` sanitizer checks.
+* passes/Dump{ContainerOf,Types}: Utility passes to aggregate the type graph.
+* passes/SimpleDataflowChecker: The LLVM pass to perform the static analysis using data flow.
+* patches: Contains the necessary LMBench passes & a syzkaller patch to ignore non-uncontained reports.
+* runtime: Contains the runtime component of the sanitizer with the functions called by the LLVM pass.
+* scripts: Contains scripts to ease compilation / running syzkaller & scripts to reproduce the experiments.
+* tests: Contains basic tests for the sanitizer & static analysis components
+* vscode-extension: Contains the vscode extension allowing easier inspection of static analysis results
+
+Submodules:
+* kernel-tools: Framework to compile LLVM, syzkaller, Linux & run LLVM passes on the kernel.
+* linux: Custom uncontained-linux repository including our own patches.
+* llvm-project: Custom uncontained-llvm-project repository including our own patches.
+
 ## Artifact Evaluation
 
 ### Description & Requirements
