@@ -215,3 +215,12 @@ necessary reports with static analysis.
 | list_entry_correlation | 3. Mismatch on Data Structure Operators |
 |         use_after_iter | 4. Containers with Contracts            |
 |                   kobj | 5. Containers with Contracts            |
+
+## Reproduce on another kernel version
+
+Most on the content in this repository is independet of the kernel version, however many
+of the patches done in [uncontained-linux](https://github.com/vusec/uncontained-linux) need to be repeated.
+
+Primarily this means: reapplying the coccinelle scripts (and manually fixing some of the issues that 
+arise from it), disable the KASAN checks, allow compiling KASAN with LTO and add nosanitize &
+uncontained_struct_nesting_info to certain structs.
