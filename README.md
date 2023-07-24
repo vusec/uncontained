@@ -184,8 +184,8 @@ benchmarking suite to verify performance overhead.
 * Preparation: Make sure you setup everything from the
    Installation step, including building syzkaller and create
    the syzkaller image (should be done by the `compile.sh` script).
-* Execution: You can compile the kernel with instrumentation and start the
-  fuzzer with executing `./scripts/run-lmbench-performance-evaluation.sh`.
+* Execution: You can compile the kernel with instrumentation and start
+  LMBench with executing `./scripts/run-lmbench-performance-evaluation.sh`.
   Then let it run to get the results.
 * Results: The result will be the overhead numbers of the different
   configurations on top of the baseline for the LMBench testcases.
