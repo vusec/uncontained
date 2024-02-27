@@ -9,8 +9,8 @@ KERNEL_PATH=$UNCONTAINED_PATH/linux
 STATIC_ANALYZERS_RESULTS_PATH=$UNCONTAINED_PATH/evaluation/static-analyzer-results
 
 # we don't want to compile the runtime and not have KASAN/KCOV enabled
-export ENABLE_KASAN=0
-export ENABLE_SYZKALLER=0
+export unset ENABLE_KASAN
+export unset ENABLE_SYZKALLER
 
 cd $KERNEL_TOOLS_PATH
 
